@@ -100,3 +100,20 @@ Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 ## NOTA PERSONAL
 
 esto es solo una api de demo para practicar.
+
+## comando a usar durante el desarrollo
+
+para generar modulos
+```bash
+$ nest g mo auth
+```
+
+para generar controlladores
+```bash
+$ nest g co auth --no-spec
+```
+
+para generar servicios
+```bash
+$ nest g s auth --no-spec
+```
