@@ -1,5 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Req, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import type { Request, Response } from 'express';
 
 @Controller()
 export class AuthController {
@@ -7,8 +8,10 @@ export class AuthController {
     constructor(private authService : AuthService){} //esta es una manera simplificada
 
     @Get('/auth')
-    getAllUser(){
-        return this.authService.getAllUser();
+    getAllUser(@Req() request : Request, @Res() response: Response){ //usar funciones de express tambien es alternativa
+
+        console.log(request.url);
+        return response.status(200).json(this.authService.getAllUser());
     }
 
 }
