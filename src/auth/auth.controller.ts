@@ -1,6 +1,7 @@
-import { Controller, Get, Req, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import type { Request, Response } from 'express';
+import { CreateUserDTO } from './dto/create-user.dto';
 
 @Controller()
 export class AuthController {
@@ -12,6 +13,13 @@ export class AuthController {
 
         console.log(request.url);
         return response.status(200).json(this.authService.getAllUser());
+    }
+
+    @Post('/user')
+    createUserPost(@Body() user:CreateUserDTO){
+
+        this.authService.createUser(user);
+
     }
 
 }

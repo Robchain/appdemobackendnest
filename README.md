@@ -117,3 +117,7 @@ para generar servicios
 ```bash
 $ nest g s auth --no-spec
 ```
+
+
+nos quedamos en el pipe, 1:23:00
+https://www.youtube.com/watch?v=wsqcg5ZtUMM

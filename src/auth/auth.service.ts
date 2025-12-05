@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class AuthService {
 
-    private user=[
+    private users=[
         {
             id:1,
             name:"Robert",
@@ -13,6 +13,15 @@ export class AuthService {
 
     getAllUser(){
 
-        return this.user;
+        return this.users;
+    }
+
+    createUser(user:any){
+
+        this.users.push({
+            ...user,
+            id:this.users.length + 1
+        })
+
     }
 }

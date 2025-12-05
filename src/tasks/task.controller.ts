@@ -1,5 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Put, Query } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put, Query, UsePipes, ValidationPipe } from "@nestjs/common";
 import { TaskServices } from "./task.service";
+import { CreateTaskDTO } from "./dto/create-task.dto";
+import { UpdateTaskDTO } from "./dto/update-task.dto";
 
 
 @Controller('/tasks')
@@ -24,14 +26,18 @@ export class TaskController{
     }
 
     @Post()
-    postAllTask( @Body() task:any){ //body del cuerpo de la llamada
+    // @UsePipes(new ValidationPipe()) //validacion del DTO, de manera individual
+    postAllTask( @Body() task: CreateTaskDTO){ //body del cuerpo de la llamada
         
         return this.taskService.postTask(task);
+
     }
 
     @Delete()
     deleteAllTask(){
+
         return this.taskService.deleteTask();
+        
     }
 
     @Patch()
@@ -40,8 +46,8 @@ export class TaskController{
     }
 
     @Put()
-    putAllTask(){
-        return this.taskService.putTask();
+    putAllTask(@Body() task:UpdateTaskDTO){
+        return this.taskService.putTask(task);
     }
 
 }
